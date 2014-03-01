@@ -55,6 +55,21 @@
 			<locationURI>STM32F4_CUBE/Drivers/BSP/STM32F4-Discovery</locationURI>
 		</link>
 		<link>
+			<name>bsp/cs43l22</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/BSP/Components/cs43l22</locationURI>
+		</link>
+		<link>
+			<name>bsp/lis302dl</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/BSP/Components/lis302dl</locationURI>
+		</link>
+		<link>
+			<name>bsp/lis3dsh</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/BSP/Components/lis3dsh</locationURI>
+		</link>
+		<link>
 			<name>drivers/Src</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
