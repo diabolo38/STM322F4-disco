@@ -67,8 +67,25 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110.2133824548" name="/" resourcePath="bsp">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.639697880" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
+							<option id="cdt.managedbuild.option.gnu.cross.prefix.1151777915.1850198804" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix.1151777915"/>
+							<option id="cdt.managedbuild.option.gnu.cross.path.483291291.1215291302" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path.483291291"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.768503667" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler.1503667912">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.48394684" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.826837559" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1864187591"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.752358603" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker.115542621"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1395517194" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker.529210733"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.997390193" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver.2048116797"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1043861510" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler.1991520382">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.967711731" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="app"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
