@@ -40,8 +40,8 @@
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
 								</option>
-								<option id="gnu.c.compiler.option.dialect.std.1899665601" superClass="gnu.c.compiler.option.dialect.std" value="gnu.c.compiler.dialect.c11" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.misc.other.1294551230" superClass="gnu.c.compiler.option.misc.other" value="-mcpu=cortex-m4 -mthumb -mfloat-abi=soft -O0 -fsigned-char -ffunction-sections -fdata-sections  -c -fmessage-length=0 " valueType="string"/>
+								<option id="gnu.c.compiler.option.dialect.std.1899665601" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.c11" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.misc.other.1294551230" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-mcpu=cortex-m4 -mthumb -mfloat-abi=hard  -O0 -fsigned-char -ffunction-sections -fdata-sections  -c -fmessage-length=0 " valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1446297327" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1864187591" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
@@ -49,8 +49,13 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.193465881" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.115542621" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker">
-								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
-								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="--specs=rdimon.specs" valueType="string"/>
+								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="PDMFilter_CM4F_GCC"/>
+								</option>
+								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mfloat-abi=hard --specs=rdimon.specs" valueType="string"/>
+								<option id="gnu.c.link.option.paths.1166753061" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_Audio\Addons\PDM&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.28133274" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -96,4 +101,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
