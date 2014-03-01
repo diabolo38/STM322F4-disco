@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ST32F4-Disco</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>app</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>app/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Projects/STM32F4-Discovery/Examples/GPIO/GPIO_EXTI/Inc</locationURI>
+		</link>
+		<link>
+			<name>app/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Projects/STM32F4-Discovery/Examples/GPIO/GPIO_EXTI/Src</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
