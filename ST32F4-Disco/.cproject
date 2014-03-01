@@ -34,6 +34,7 @@
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/STM32F4-Discovery"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -45,7 +46,7 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.193465881" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.115542621" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker">
-								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs"/>
+								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
 								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="--specs=rdimon.specs" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.28133274" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -60,6 +61,7 @@
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/STM32F4-Discovery"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1445312066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -101,6 +103,7 @@
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\STM32F4xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\BSP\STM32F4-Discovery&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.223643318" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -125,6 +128,7 @@
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\CMSIS\Include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\BSP\STM32F4-Discovery&quot;"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.590027738" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
