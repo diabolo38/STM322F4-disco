@@ -30,6 +30,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.114225553" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1392218987" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1376186594" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
@@ -57,6 +58,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.2048116797" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1991520382" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
 								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
@@ -64,22 +66,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1445312066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-							</tool>
-						</toolChain>
-					</folderInfo>
-					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110.2133824548" name="/" resourcePath="bsp">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.639697880" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
-							<option id="cdt.managedbuild.option.gnu.cross.prefix.1151777915.1850198804" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix.1151777915"/>
-							<option id="cdt.managedbuild.option.gnu.cross.path.483291291.1215291302" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path.483291291"/>
-							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.768503667" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler.1503667912">
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.48394684" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.826837559" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1864187591"/>
-							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.752358603" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker.115542621"/>
-							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1395517194" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker.529210733"/>
-							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.997390193" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver.2048116797"/>
-							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1043861510" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler.1991520382">
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.967711731" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
@@ -116,6 +102,7 @@
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.option.optimization.level.1365225694" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1420088377" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1321993875" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\CMSIS\Include&quot;"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\STM32F4xx_HAL_Driver\Inc&quot;"/>
@@ -141,6 +128,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.1343341863" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1997282582" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
 								<option id="gnu.both.asm.option.include.paths.980384883" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\STM32F4xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\CMSIS\Include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\BSP\STM32F4-Discovery&quot;"/>
