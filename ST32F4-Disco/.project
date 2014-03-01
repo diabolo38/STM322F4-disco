@@ -35,6 +35,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>drivers</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>app/Inc</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Projects/STM32F4-Discovery/Examples/GPIO/GPIO_EXTI/Inc</locationURI>
@@ -48,6 +53,11 @@
 			<name>bsp/STM32F4-Discovery</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Drivers/BSP/STM32F4-Discovery</locationURI>
+		</link>
+		<link>
+			<name>drivers/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
