@@ -25,11 +25,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>app</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>bsp</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -38,16 +33,6 @@
 			<name>drivers</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>app/Inc</name>
-			<type>2</type>
-			<locationURI>STM32F4_CUBE/Projects/STM32F4-Discovery/Examples/GPIO/GPIO_EXTI/Inc</locationURI>
-		</link>
-		<link>
-			<name>app/Src</name>
-			<type>2</type>
-			<locationURI>STM32F4_CUBE/Projects/STM32F4-Discovery/Examples/GPIO/GPIO_EXTI/Src</locationURI>
 		</link>
 		<link>
 			<name>bsp/STM32F4-Discovery</name>

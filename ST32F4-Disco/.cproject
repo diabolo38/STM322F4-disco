@@ -23,19 +23,17 @@
 							<builder buildPath="${workspace_loc:/ST32F4-Disco}/Debug" id="org.eclipse.cdt.build.core.internal.builder.1022233562" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
-									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
 								</outputEntries>
 							</builder>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.1503667912" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.114225553" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1392218987" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1376186594" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="../inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/STM32F4-Discovery"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -52,8 +50,7 @@
 								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
 								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mfloat-abi=hard -T libs.ld -T mem.ld -T sections.ld -Wl,-Map,&quot;${ProjName}.map&quot;" valueType="string"/>
 								<option id="gnu.c.link.option.paths.1166753061" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_Audio\Addons\PDM&quot;"/>
-									<listOptionValue builtIn="false" value="../toolchain/ldscripts"/>
+									<listOptionValue builtIn="false" value="&quot;../toolchain\ldscripts&quot;"/>
 								</option>
 								<option id="gnu.c.link.option.nostart.360799802" name="Do not use standard start files (-nostartfiles)" superClass="gnu.c.link.option.nostart" value="true" valueType="boolean"/>
 								<option id="gnu.c.link.option.userobjs.763596060" name="Other objects" superClass="gnu.c.link.option.userobjs"/>
@@ -69,12 +66,11 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.2048116797" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1991520382" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
 								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="../inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/STM32F4-Discovery"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 								</option>
 								<option id="gnu.both.asm.option.flags.2003334280" name="Assembler flags" superClass="gnu.both.asm.option.flags" value="-mcpu=cortex-m4 -mthumb -c" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1445312066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
@@ -82,9 +78,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="startup_stm32f407xx.s" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="app"/>
-						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="bsp"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="drivers"/>
+						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="bsp"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry excluding="system_stm32f4xx.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="toolchain"/>
 					</sourceEntries>
 				</configuration>
