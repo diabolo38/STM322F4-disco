@@ -50,7 +50,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.115542621" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker">
 								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
-								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mfloat-abi=hard -T libs.ld -T mem.ld -T sections.ld -Wl,-Map,&quot;map.map&quot;" valueType="string"/>
+								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mfloat-abi=hard -T libs.ld -T mem.ld -T sections.ld -Wl,-Map,&quot;${ProjName}.map&quot;" valueType="string"/>
 								<option id="gnu.c.link.option.paths.1166753061" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_Audio\Addons\PDM&quot;"/>
 									<listOptionValue builtIn="false" value="../toolchain/ldscripts"/>
