@@ -366,7 +366,7 @@ pfn g_pfnVectors[] =
 
 #endif // defined(STM32F401xx)
 
-#if defined (STM32F40_41xxx)
+#if defined (STM32F40_41xxx) || defined(STM32F407xx)
 
     CAN1_TX_IRQHandler,                            // CAN1 TX
     CAN1_RX0_IRQHandler,                           // CAN1 RX0
