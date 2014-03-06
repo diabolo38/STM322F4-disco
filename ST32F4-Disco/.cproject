@@ -34,12 +34,21 @@
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/STM32F4-Discovery"/>
 									<listOptionValue builtIn="false" value="../app/Inc"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Core\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\AUDIO\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\CustomHID\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\DFU\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\MSC\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\STM\STM32Cube_FW_F4_V1.1.0\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="../toolchain"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
+									<listOptionValue builtIn="false" value="USE_STM32F4_DISCO"/>
 								</option>
 								<option id="gnu.c.compiler.option.dialect.std.1899665601" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.c11" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.misc.other.1294551230" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-mcpu=cortex-m4 -mthumb -mfloat-abi=hard  -O0 -fsigned-char -ffunction-sections -fdata-sections  -c -fmessage-length=0 " valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1294551230" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-mcpu=cortex-m4 -mthumb -mfloat-abi=soft -mfpu=fpv4-sp-d16  -O0 -fsigned-char -ffunction-sections -fdata-sections  -c -fmessage-length=0 " valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1446297327" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1864187591" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
@@ -48,9 +57,9 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.115542621" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker">
 								<option id="gnu.c.link.option.libs.792218099" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
-								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mfloat-abi=hard -T libs.ld -T mem.ld -T sections.ld -Wl,-Map,&quot;${ProjName}.map&quot;" valueType="string"/>
+								<option id="gnu.c.link.option.ldflags.1158894568" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-mcpu=cortex-m4 -mthumb -mfloat-abi=soft  -T libs.ld -T mem.ld -T sections.ld   -Wl,-Map,&quot;${ProjName}.map&quot;   " valueType="string"/>
 								<option id="gnu.c.link.option.paths.1166753061" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;../toolchain\ldscripts&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;../toolchain/ldscripts&quot;"/>
 								</option>
 								<option id="gnu.c.link.option.nostart.360799802" name="Do not use standard start files (-nostartfiles)" superClass="gnu.c.link.option.nostart" value="true" valueType="boolean"/>
 								<option id="gnu.c.link.option.userobjs.763596060" name="Other objects" superClass="gnu.c.link.option.userobjs"/>
@@ -77,6 +86,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry excluding="usb-d/Src/usbd_conf_template.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="app"/>
 						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>

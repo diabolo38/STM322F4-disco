@@ -25,12 +25,27 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>Middlewares</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>bsp</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>drivers</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -58,6 +73,36 @@
 			<name>drivers/Src</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/src</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/usbd_hid.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/src/usbd_core.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/src/usbd_ctlreq.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/src/usbd_ioreq.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
