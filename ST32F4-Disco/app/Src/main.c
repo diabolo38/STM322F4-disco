@@ -108,8 +108,7 @@ int main(void)
        - Set NVIC Group Priority to 4
        - Global MSP (MCU Support Package) initialization
      */
-  HAL_Init(); //HAL_PCD_EP_Receive
-
+  HAL_Init();
 
   /* Configure LED4, LED3, LED5 and LED6 */
   BSP_LED_Init(LED4);
@@ -198,12 +197,7 @@ static void Demo_Exec(void)
           BSP_LED_Toggle(LED6);
           HAL_Delay(10);
           togglecounter ++;
-
-
         }
-        int *p=malloc(32);
-        p=malloc(32);
-
         togglecounter = 0x00;
       }
     }
