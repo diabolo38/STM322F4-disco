@@ -38,6 +38,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usbd_template.h"
 
 /** @addtogroup STM32F4xx_HAL_Demonstrations
   * @{
@@ -234,8 +235,8 @@ static void Demo_Exec(void)
   * @param  None
   * @retval None
   */
-static uint32_t Demo_USBConfig(void)
-{
+static uint32_t Demo_USBConfig(void) {
+#if USE_HID
   /* Init Device Library */
   USBD_Init(&hUSBDDevice, &HID_Desc, 0);
   
@@ -244,8 +245,24 @@ static uint32_t Demo_USBConfig(void)
   
   /* Start Device Process */
   USBD_Start(&hUSBDDevice);
-  
+
   return 0;
+#else
+    int status;
+    /* Init Device Library */
+    status = USBD_Init(&hUSBDDevice, &USBDev_Desc, 0);
+    if ( status == USBD_OK) {
+        /* Add Supported Class */
+        status = USBD_RegisterClass(&hUSBDDevice, &USBD_TEMPLATE_ClassDriver);
+        if( status == USBD_OK  ){
+            /* Start Device Process */
+            USBD_Start(&hUSBDDevice);
+            return 0;
+        }
+    }
+    Error_Handler();
+    return -1;
+#endif    
 }
 
 /**
@@ -346,9 +363,11 @@ void HAL_SYSTICK_Callback(void)
     buf = USBD_HID_GetPos();
     if((buf[1] != 0) ||(buf[2] != 0))
     {
+#if USE_HID
       USBD_HID_SendReport (&hUSBDDevice, 
                            buf,
                            4);
+#endif
     } 
     Counter ++;
     if (Counter == 10)

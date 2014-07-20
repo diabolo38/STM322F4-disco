@@ -70,6 +70,7 @@
 /** @defgroup USBD_DESC_Exported_Variables
   * @{
   */ 
+extern USBD_DescriptorsTypeDef USBDev_Desc;
 extern USBD_DescriptorsTypeDef HID_Desc;
 /**
   * @}

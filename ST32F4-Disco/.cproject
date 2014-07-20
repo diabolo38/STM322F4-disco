@@ -15,7 +15,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110" name="Debug" parent="cdt.managedbuild.config.gnu.cross.exe.debug">
+				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110" name="Debug" parent="cdt.managedbuild.config.gnu.cross.exe.debug" postbuildStep="${cross_prefix}size  ${ProjName}.elf">
 					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.1875062553" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug">
 							<option id="cdt.managedbuild.option.gnu.cross.prefix.1151777915" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" value="arm-none-eabi-" valueType="string"/>
@@ -32,17 +32,16 @@
 								<option id="gnu.c.compiler.option.include.paths.1376186594" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Drivers\CMSIS\Include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Drivers\CMSIS\Device\ST\STM32F4xx\Include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Drivers\STM32F4xx_HAL_Driver\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Drivers\BSP\STM32F4-Discovery&quot;"/>
 									<listOptionValue builtIn="false" value="../app/Inc"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Core\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\AUDIO\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\CustomHID\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\DFU\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\MSC\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE}\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="../toolchain"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/bsp/STM32F4-Discovery}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/core/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/hid/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/msc/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/cdc/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/AUDIO/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/DFU/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/toolchain}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/Inc}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -87,7 +86,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="usb-d/Src/usbd_conf_template.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Middlewares"/>
+						<entry excluding="usb-d/class/DFU|usb-d/class/AUDIO|usb-d/class/msc|usb-d/class/cdc|usb-d/Src/usbd_conf_template.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="app"/>
 						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>

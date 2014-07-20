@@ -70,6 +70,11 @@
 			<locationURI>STM32F4_CUBE/Drivers/BSP/Components/lis3dsh</locationURI>
 		</link>
 		<link>
+			<name>drivers/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Inc</locationURI>
+		</link>
+		<link>
 			<name>drivers/Src</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
@@ -80,27 +85,107 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/usb-d/src</name>
+			<name>Middlewares/usb-d/core</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/usb-d/class/usbd_hid.c</name>
-			<type>1</type>
-			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c</locationURI>
+			<name>Middlewares/usb-d/class/AUDIO</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/usb-d/src/usbd_core.c</name>
+			<name>Middlewares/usb-d/class/DFU</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/cdc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/hid</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/msc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/core/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/core/src</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/AUDIO/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/AUDIO/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/DFU/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/DFU/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/cdc/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/cdc/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/hid/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/hid/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/msc/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/class/msc/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-d/core/src/usbd_core.c</name>
 			<type>1</type>
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/usb-d/src/usbd_ctlreq.c</name>
+			<name>Middlewares/usb-d/core/src/usbd_ctlreq.c</name>
 			<type>1</type>
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/usb-d/src/usbd_ioreq.c</name>
+			<name>Middlewares/usb-d/core/src/usbd_ioreq.c</name>
 			<type>1</type>
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</locationURI>
 		</link>
