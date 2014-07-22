@@ -192,8 +192,8 @@
 	</linkedResources>
 	<variableList>
 		<variable>
-			<name>copy_PARENT</name>
-			<value>$%7BPARENT-3-PROJECT_LOC%7D/cube_projs/df4disco/stm32f407Discovery-typ</value>
+			<name>STM32F4_CUBE</name>
+			<value>file:/C:/STM/STM32Cube_FW_F4_V1.3.0</value>
 		</variable>
 	</variableList>
 </projectDescription>
