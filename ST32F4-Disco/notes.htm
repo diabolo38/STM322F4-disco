@@ -1,23 +1,18 @@
-app
-linkler file usualy is in example under "attolic" there
 
-+ APP ($cube)\Projects\STM32F4-Discovery\Examples\GPIO\GPIO_EXTI => src 
-=> src =>*.c
-=> inc => *.h
-=> TrueSTUDIO \ crt0.s to use
-=> TrueSTUDIO\STM32F4-Discovery => ld 
-  
-board bsp may dpedn on componet in
+STM32F4_CUBE linked resource must be defined and point to stm32f4_vxxx library top folder 
+
+app
+
+board bsp may depend on component in 
 ($cube)/ drivers/bsp
 C:\STM\STM32Cube_FW_F4_V1.1.0\Drivers\BSP\Components
 dir list  "C:/STM/STM32Cube_FW_F4_V1.1.0/Drivers/BSP/Components"
-for bsp board and compent folder have to be in src and inc
+for bsp board and component folder have to be in src and inc
 
 
-f app need usb it may eb device or host 
+app may need usb device or host to be bringed in Midllewares 
 include both and all class?
 
 get hid cfg passed
 
--T libs.ld -T mem.ld -T sections.ld  
 
