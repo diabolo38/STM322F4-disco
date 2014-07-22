@@ -260,13 +260,13 @@ static uint32_t Demo_USBConfig(void) {
    /* Add Supported Class */
    status=USBD_RegisterClass(&hUSBDDevice, &USBD_CDC);
 
-   status=USBD_CDC_RegisterInterface  (&hUSBDDevice, &USBD_Interface_fops_FS);
+   status+=USBD_CDC_RegisterInterface  (&hUSBDDevice, &USBD_Interface_fops_FS);
 
    /* Start Device Process */
-   status=USBD_Start(&hUSBDDevice);
+   status+=USBD_Start(&hUSBDDevice);
 
    USBD_CDC_ReceivePacket(&hUSBDDevice);
-   return 0;
+   return status;
 #else
     int status;
     /* Init Device Library */
@@ -380,16 +380,20 @@ void HAL_SYSTICK_Callback(void)
   uint16_t NewARR_X, NewARR_Y = 0x00;
   
  if (DemoEnterCondition != 0x00)
-  {
-#if USE_HID
+ {
      uint8_t *buf;
-    buf = USBD_HID_GetPos();
+     buf = USBD_HID_GetPos();
+
+#if USE_HID
+
     if((buf[1] != 0) ||(buf[2] != 0))
     {
       USBD_HID_SendReport (&hUSBDDevice, 
                           buf,
                           4);
     }
+#else
+    (void)buf; /* avoid warning un-used param buf */
 #endif
 
 #if USE_CDC
