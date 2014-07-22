@@ -77,6 +77,7 @@ static int16_t ThreadholdAcceleroLow = -110, ThreadholdAcceleroHigh = 110;
 /* Variables used for USB */
 USBD_HandleTypeDef  hUSBDDevice;
 
+
 /* Variables used for timer */
 uint16_t PrescalerValue = 0;
 TIM_HandleTypeDef htim4;
@@ -248,6 +249,25 @@ static uint32_t Demo_USBConfig(void) {
 
   return 0;
 #else
+#if USE_CDC
+  int status;
+    #include "usbd_cdc_if.h"
+    extern USBD_DescriptorsTypeDef FS_Desc;
+
+  /* Init Device Library */
+   USBD_Init(&hUSBDDevice, &FS_Desc, 0);
+
+   /* Add Supported Class */
+   status=USBD_RegisterClass(&hUSBDDevice, &USBD_CDC);
+
+   status=USBD_CDC_RegisterInterface  (&hUSBDDevice, &USBD_Interface_fops_FS);
+
+   /* Start Device Process */
+   status=USBD_Start(&hUSBDDevice);
+
+   USBD_CDC_ReceivePacket(&hUSBDDevice);
+   return 0;
+#else
     int status;
     /* Init Device Library */
     status = USBD_Init(&hUSBDDevice, &USBDev_Desc, 0);
@@ -263,6 +283,7 @@ static uint32_t Demo_USBConfig(void) {
     Error_Handler();
     return -1;
 #endif    
+#endif
 }
 
 /**
@@ -354,21 +375,31 @@ static void TIM4_Config(void)
   */
 void HAL_SYSTICK_Callback(void)
 {
-  uint8_t *buf;
+
   uint16_t Temp_X, Temp_Y = 0x00;
   uint16_t NewARR_X, NewARR_Y = 0x00;
   
  if (DemoEnterCondition != 0x00)
   {
+#if USE_HID
+     uint8_t *buf;
     buf = USBD_HID_GetPos();
     if((buf[1] != 0) ||(buf[2] != 0))
     {
-#if USE_HID
       USBD_HID_SendReport (&hUSBDDevice, 
-                           buf,
-                           4);
+                          buf,
+                          4);
+    }
 #endif
-    } 
+
+#if USE_CDC
+      USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUSBDDevice.pClassData;
+      if( hcdc->TxState == 0 && hcdc->TxBuffer ){
+          sprintf( (char*)hcdc->TxBuffer, "%d %d\n", Buffer[0], Buffer[1]);
+          hcdc->TxLength=strlen((char*)hcdc->TxBuffer);
+          USBD_CDC_TransmitPacket(&hUSBDDevice);
+      }
+#endif
     Counter ++;
     if (Counter == 10)
     {
@@ -384,6 +415,8 @@ void HAL_SYSTICK_Callback(void)
 
       /* Read Acceleration*/
       BSP_ACCELERO_GetXYZ(Buffer);
+
+
       
       /* Set X and Y positions */
       X_Offset = Buffer[0];
@@ -463,7 +496,8 @@ void HAL_SYSTICK_Callback(void)
         }
       }
       Counter = 0x00;
-    }  
+    }
+
   }
 }
 
@@ -553,7 +587,8 @@ static void SystemClock_Config(void)
 {
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
-
+#if 0
+  /* ext crystal conig 168 MHz */
   /* Enable Power Control clock */
   __PWR_CLK_ENABLE();
   
@@ -581,6 +616,35 @@ static void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;  
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;  
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
+
+  RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  RCC_OscInitTypeDef RCC_OscInitStruct;
+
+
+#else
+  /* rc config  sys 96Mhz 24Mhz APB1 48Mhz APB2  */
+  __PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = 6;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLN = 192;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLQ = 8;
+  HAL_RCC_OscConfig(&RCC_OscInitStruct);
+
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1
+                              |RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+#endif
 }
 
 #ifdef  USE_FULL_ASSERT

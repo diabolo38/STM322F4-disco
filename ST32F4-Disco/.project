@@ -190,4 +190,10 @@
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>copy_PARENT</name>
+			<value>$%7BPARENT-3-PROJECT_LOC%7D/cube_projs/df4disco/stm32f407Discovery-typ</value>
+		</variable>
+	</variableList>
 </projectDescription>
