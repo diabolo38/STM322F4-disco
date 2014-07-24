@@ -70,14 +70,14 @@
 			<locationURI>STM32F4_CUBE/Drivers/BSP/Components/lis3dsh</locationURI>
 		</link>
 		<link>
-			<name>drivers/Inc</name>
+			<name>drivers/CMSIS</name>
 			<type>2</type>
-			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Inc</locationURI>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>drivers/Src</name>
+			<name>drivers/HAL</name>
 			<type>2</type>
-			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/usb-d/class</name>
@@ -88,6 +88,26 @@
 			<name>Middlewares/usb-d/core</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>drivers/CMSIS/Include</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/CMSIS/Include</locationURI>
+		</link>
+		<link>
+			<name>drivers/CMSIS/STM32F4xx</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>drivers/HAL/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Inc</locationURI>
+		</link>
+		<link>
+			<name>drivers/HAL/Src</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/STM32F4xx_HAL_Driver/Src</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/usb-d/class/AUDIO</name>
@@ -123,6 +143,11 @@
 			<name>Middlewares/usb-d/core/src</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>drivers/CMSIS/STM32F4xx/Include</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Drivers/CMSIS/Device/ST/STM32F4xx/Include</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/usb-d/class/AUDIO/Inc</name>

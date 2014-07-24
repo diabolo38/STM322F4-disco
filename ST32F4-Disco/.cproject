@@ -3,9 +3,6 @@
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.cross.exe.debug.2144362110" moduleId="org.eclipse.cdt.core.settings" name="Debug">
-				<macros>
-					<stringMacro name="STM32_CUBE" type="VALUE_PATH_DIR" value="C:\STM\STM32Cube_FW_F4_V1.3.0"/>
-				</macros>
 				<externalSettings/>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
@@ -30,9 +27,9 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.114225553" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1392218987" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1376186594" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
-									<listOptionValue builtIn="false" value="D:/git_repos/stm32f4-disco/ST32F4-Disco/app/Inc"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/CMSIS/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/CMSIS/STM32F4xx/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/app/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/bsp/STM32F4-Discovery}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/core/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/hid/Inc}&quot;"/>
@@ -41,10 +38,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/AUDIO/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/DFU/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/toolchain}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/usbc/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/BSP/STM32F4-Discovery"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/HAL/Inc}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.456242728" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -77,23 +72,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.529210733" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.2048116797" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1991520382" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
-								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
-									<listOptionValue builtIn="false" value="D:/git_repos/stm32f4-disco/ST32F4-Disco/app/Inc"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/hid/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/msc/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/cdc/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/AUDIO/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/DFU/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/toolchain}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/usbc/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/STM32F4xx_HAL_Driver/Inc"/>
-									<listOptionValue builtIn="false" value="C:/STM/STM32Cube_FW_F4_V1.3.0/Drivers/BSP/STM32F4-Discovery"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/core/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/bsp/STM32F4-Discovery}&quot;"/>
-								</option>
+								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<option id="gnu.both.asm.option.flags.2003334280" name="Assembler flags" superClass="gnu.both.asm.option.flags" value="-mcpu=cortex-m4 -mthumb -c" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1445312066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
