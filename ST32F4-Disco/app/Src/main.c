@@ -589,10 +589,12 @@ static void Error_Handler(void)
   */
 static void SystemClock_Config(void)
 {
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-#if 0
-  /* ext crystal conig 168 MHz */
+    RCC_ClkInitTypeDef RCC_ClkInitStruct;
+    RCC_OscInitTypeDef RCC_OscInitStruct;
+
+#if 1
+  /* ext crystal conig 168 MHz best been used with usb */
+
   /* Enable Power Control clock */
   __PWR_CLK_ENABLE();
   
@@ -620,10 +622,6 @@ static void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;  
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;  
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
-
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-
 
 #else
   /* rc config  sys 96Mhz 24Mhz APB1 48Mhz APB2  */
