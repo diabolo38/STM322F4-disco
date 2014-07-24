@@ -1,7 +1,8 @@
 <h2> eclipse setup</h2>
 <h2>var</h2>
-STM32F4_CUBE linked resource variable must be defined and point to pfolder stm32f4_vxxx library top folder
-<br>
+STM32F4_CUBE linked resource variable must be defined and point to stm32f4_vxxx library top folder<br>
+the library is partilay downloaded by STM32CuveMX but the project equired the  full package that can be donwloed from 
+ <a href="http://www.st.com/web/en/catalog/tools/PF259243">st web site</a>
 <img src="link_var.png"></img>
 refresh (f5) project once done to get all path resolved <br>
  <h2>setting</h2>
@@ -9,18 +10,18 @@ refresh (f5) project once done to get all path resolved <br>
  <img src="corss_setting.png"></img>
  
 <h1>folder</h1>
-<h2> tooolchain</h2>
+<h2>tooolchain</h2>
 toolchains specific file like startup linker script interrupt vector etc ... <br>
 part of these files come from gnu arm eclipse plugin <br>
 can be installed from <a href="http://gnuarmeclipse.sourceforge.net/updates"></a>
 
-<h2> bsp</h2>
+<h2>bsp</h2>
 stm32f4 cube board support package file, ease interaction with board mems/accelero and audio<br>
 audio not working not tested so far  issue in getting the dsp lib to link .
 if not need these can be exclude form build or deleted delete the link only)   
  
 <h2> drivers</h2>
-src and inc link to all hal drivers<br>
+src and inc link to all hal cmsis and device drivers<br>
 make sure to have a correct stm32f4_hal_conf.h in your app/inc!<br>
 unused driver c file may be exclude from build to save compile time.
  
@@ -29,31 +30,34 @@ Middlewares from the stm32f4 cube library only usb device are present for now,<b
 unused class directory may be exclude from link to save compile time.  
 
 <h2>usbc</h2>
-in progress work for usb device side to support kinf of composite device framework<br>
+in progress work for usb device to support a better composite usb device framework<br>
 require to get demo hid/cdc <br> 
  
-<h2> Application App/src  App/inc </h2>
-can be copied from CubeMX gnerated project (attolic base or not)<br>
+<h2>Application App/src  App/inc </h2>
+The application source and include<br>Copied from CubeMX gnerated project (attolic base or not)<br>
   
-If app need different usb device or host exclude delte existing one from configuration 
-or bring new from Middlewares (use virtual folder and link via variable).<br>   
-
+If app need different usb device or host exclude delete existing one from configuration 
+bring new from Middlewares (use virtual folder and link via variable).<br>   
 <h1>demo </h1> 
-<h2>build</h2>
-
-demo can be built with hid or cdc (typical cdc if from cube generator) 
+<h2>customizing build</h2>
+demo can be built with hid or cdc (include a typical cdc if from cube generator) 
 see main.h only define one of <br>  
 #define USE_HID 0 <br>
 #define USE_CDC 1 <br>
 
-download and install virtual com driver from <a href="http://www.st.com/web/en/catalog/tools/PF257938"> st site </a> and install it 
-when demo enter usb cdc mode it will send mems acceleration x,y  to serial (use a terminal such as putty or teraterm)
+By defaut external HS mode is used but internal osiclator can be selected by editing<br> 
+static void SystemClock_Config(void)<br>
+ 
 <h2>launch and debug </h2>
 update the launch config to use rigth opencd and debuger if not correct<br>
 <img src="debug_cfg.png"></img>
 if eclipse cross var are sets you could use ${cross_prefix}gdb${cross_suffix} instead of system path<br>
 <br> 
-openocd launcher is part of gnu arm eclispe plugin it can be installed from <a href="http://gnuarmeclipse.sourceforge.net/updates"></a>
- 
+openocd launcher is part of gnu arm eclispe plugin it can be installed from <a href="http://gnuarmeclipse.sourceforge.net/updates">here</a>
+
+<h2>running</h2>
+Like the offcial demo press the ble buuton to togle usb mode<br>
+download and install virtual com driver from <a href="http://www.st.com/web/en/catalog/tools/PF257938"> st site </a> and install it. 
+when demo enter usb cdc mode it will send mems acceleration x,y  to serial (use a terminal such as putty or teraterm)
 
 
