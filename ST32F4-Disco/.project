@@ -90,6 +90,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/usb-h/core</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>drivers/CMSIS/Include</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Drivers/CMSIS/Include</locationURI>
@@ -141,6 +146,16 @@
 		</link>
 		<link>
 			<name>Middlewares/usb-d/core/src</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/Inc</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Inc</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/src</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -213,6 +228,26 @@
 			<name>Middlewares/usb-d/core/src/usbd_ioreq.c</name>
 			<type>1</type>
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/src/usbh_core.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/src/usbh_ctlreq.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/src/usbh_ioreq.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ioreq.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/usb-h/core/src/usbh_pipes.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

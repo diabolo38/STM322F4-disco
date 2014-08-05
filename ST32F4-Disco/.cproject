@@ -72,14 +72,14 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.529210733" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.2048116797" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1991520382" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
-								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
+								<option id="gnu.both.asm.option.include.paths.1067113603" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths"/>
 								<option id="gnu.both.asm.option.flags.2003334280" name="Assembler flags" superClass="gnu.both.asm.option.flags" value="-mcpu=cortex-m4 -mthumb -c" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1445312066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="usb-d/Src/usbd_conf_template.c|usb-d/class/msc|usb-d/class/DFU|usb-d/class/AUDIO" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry excluding="usb-h|usb-d/Src/usbd_conf_template.c|usb-d/class/msc|usb-d/class/DFU|usb-d/class/AUDIO" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="app"/>
 						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>

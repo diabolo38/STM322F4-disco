@@ -42,6 +42,7 @@ to some extent str index in "interface" could be made automatic
 #define COMPDEV_MAX_FUNC   4
 #define COMPDEV_MAX_FUNC_EP 4 /* 2x as among int /out */
 #define COMPDEV_MAX_FUNC_IF 4
+#define COMPDEV_MAX_FUNC_STR    16
 
 
 /**
@@ -55,29 +56,6 @@ int n_err=0;
 void log_err(){
     n_err++;
 }
-
-
-/* device descriptor interface with ST USBD  framework */
-
-uint8_t* CDev_GetDeviceDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetLangIDStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetManufacturerStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetProductStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetSerialStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetConfigurationStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-uint8_t* CDev_GetInterfaceStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length);
-
-#if 0
-USBD_DescriptorsTypeDef CDev_DevDes = {
-    .GetDeviceDescriptor=CDev_GetDeviceDescriptor,
-    .GetLangIDStrDescriptor=CDev_GetLangIDStrDescriptor,
-    .GetManufacturerStrDescriptor=CDev_GetManufacturerStrDescriptor,
-    .GetProductStrDescriptor= CDev_GetProductStrDescriptor,
-    .GetSerialStrDescriptor=CDev_GetSerialStrDescriptor,
-    .GetConfigurationStrDescriptor=CDev_GetConfigurationStrDescriptor,
-    .GetInterfaceStrDescriptor=CDev_GetInterfaceStrDescriptor,
-};
-#endif
 
 uint8_t _CDev_Init           (struct _USBD_HandleTypeDef *pdev , uint8_t cfgidx);
 uint8_t _CDev_DeInit         (struct _USBD_HandleTypeDef *pdev , uint8_t cfgidx);
@@ -135,17 +113,20 @@ USBD_ClassTypeDef CDev_Class={
 struct  usbfunc_t {
     const char *name;                   // for debug purpose
 
-    uint8_t InEps[COMPDEV_MAX_FUNC_EP];   // 0 mean not used entry else the ep address
-    uint8_t OutEps[COMPDEV_MAX_FUNC_EP];   // 0 mean not used entry else the ep address
+    uint8_t InEps[COMPDEV_MAX_FUNC_EP];     // 0 mean not used entry else the ep address
+    uint8_t OutEps[COMPDEV_MAX_FUNC_EP];    // 0 mean not used entry else the ep address
 
     struct usbfunc_itf_t *intf;             // function driver
+    char **StrTable;                        // string table of that function 0 terminated
+    uint8_t str_1st;                        // index of first string of that fucntion (set at cfg select)
+    uint8_t str_cnt;                        // str cnt even if not all used that will be set
+    uint8_t *desc_fs;                       // Descriptor compact form or struct xxx_desc ** ?
+    uint8_t *desc_hs;                       // as above but for hs
+    //if hs and fs are fully auto (or manual ) where all ep use auto max packet size of fixed siz (ie  no bulk hs)
+    // then hs and fs desc can be same all ep max packet will be auto adjusted when providing descr to host
 
-    uint8_t *desc_fs;                          // Descriptor compact form or not  ?
-    uint8_t *desc_hs;                          // Descriptor compact form or not ?
     uint8_t option;
     uint8_t index;                             // index in cdev for back link
-
-
 };
 
 
@@ -155,7 +136,9 @@ struct CDev_t  {
     uint8_t InEpf2Func [COMPDEV_MAX_IN_EP];     /* ep 0 and we used 0 for "not assigned"  */
     uint8_t OutEpf2Func [COMPDEV_MAX_OUT_EP];
     struct usbfunc_t *Funcs[COMPDEV_MAX_FUNC];
+    char **StrTable;
     uint8_t n_func;
+    uint8_t n_String;
 };
 
 /* use during configuration descriptor elaboration  */
@@ -217,6 +200,8 @@ __ALIGN_BEGIN static uint8_t _CDev_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_DES
 
 
 //#define _M_INLINE __attribute__((always_inline)) /* as much as possible always inline but for deep debug */
+
+#define __CDev_GetFirstStrIndex(cdev)   (USBD_IDX_INTERFACE_STR+1)
 
 _PRIVATE struct CDev_t * GetActiveUSBD(){
     assert( active_usbd!=NULL);
@@ -399,6 +384,7 @@ int __CDev_do_cfg_descr(struct CDev_t * cdev, int activate_cfg, USBD_SpeedTypeDe
     struct  usbfunc_t *uf;
     int f;
     int status;
+    int str_1st;
     uint8_t *pdesc;
 //    struct cfg_context_t ctx;
     uint8_t InEps[COMPDEV_MAX_FUNC_EP];   // 0 mean not used entry else the ep address
@@ -416,9 +402,11 @@ int __CDev_do_cfg_descr(struct CDev_t * cdev, int activate_cfg, USBD_SpeedTypeDe
     ctx->Activate = activate_cfg;
     ctx->speed = speed;
 
-
+    str_1st=__CDev_GetFirstStrIndex(cdev);
     for( f=0; f<cdev->n_func; f++){
         uf=cdev->Funcs[f];
+        uf->str_1st=str_1st;
+        str_1st+=uf->str_cnt;
         /* reset auto ep fucntion */
         if( activate_cfg ){
             ctx->AutoInEps = uf->InEps;
@@ -472,6 +460,7 @@ uint8_t* _CDev_GetDeviceQualifierDescriptor(uint16_t *length){
 }
 
 uint8_t* _CDev_GetUsrStrDescriptor(struct _USBD_HandleTypeDef *pdev ,uint8_t index,  uint16_t *length){
+    struct CDev_t * cdev=usbd_2_cdev(pdev);
 
 }
 
@@ -668,6 +657,24 @@ struct usbfunc_t *CDev_NewFunc( uint8_t *desc_hs, uint8_t *desc_fs, struct usbfu
     return uf;
 }
 
+int CDev_SetFuncStrings(struct usbfunc_t *uf, char **str_table, int n_str)
+{
+    uf->StrTable=str_table;
+    if( n_str<=0 ){
+        int n=0;
+        while(*str_table!=NULL && n < COMPDEV_MAX_FUNC_STR){
+            str_table++;
+            n++;
+        }
+        uf->str_cnt=n;
+        if( *str_table!=NULL )
+            return -1;
+    }
+    else{
+        uf->str_cnt=n_str;
+    }
+    return 0;
+}
 
 int CDev_AddFunc(struct CDev_t *cdev, struct usbfunc_t *uf, int cfg_desc, const char *name){
     int status;

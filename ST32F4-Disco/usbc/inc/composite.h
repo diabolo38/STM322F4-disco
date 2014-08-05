@@ -77,6 +77,17 @@ int CDev_Register(struct CDev_t *cdev, USBD_HandleTypeDef *pdev);
  */
 struct usbfunc_t *CDev_NewFunc( uint8_t *desc_hs, uint8_t *desc_fs, struct usbfunc_itf_t *itf, enum AddFuncFlags_e option_flag  );
 
+/** set string table associaetd to the function
+ * all interafce string id non 0 with auto_str_index mask will be maped to that string array
+ * composite devcie will arrange final str idnex and string descripo retrun to host
+ *
+ * @param func          the function
+ * @param str_table     The string table ["s#1","s#2"..., "s#n_str"(,NULL)]
+ * @param n_str         optional set <=0  if tabel is NULLL terminated when not >0 these idicate the len of table
+ * @return              0 on sucess
+ */
+int CDev_SetFuncStrings(struct usbfunc_t *func, char **str_table, int n_str);
+
 /**
  * CDev_AddFunc Add an existing valid usb function to a composite device
  * no valid check is performed ! be sure function init correctly as  it can lead to malfunction
