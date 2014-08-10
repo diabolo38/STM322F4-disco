@@ -5,22 +5,31 @@
  *      Author: michel
  *
  descriptor
-    compact :
-       save space group in a byte array or packed struct
-       duplication of sub desc when common
+    compact form:
+       everything is grouped in a byte array or packed struct
+       duplication of sub desc when common  require more space for multi instance multi speed
     desc ptr array ( :
        consume more space when no descriptor re-used
- an dev  lookign similar in hs and fs can re-used most of the decriptor expect any ep descriptor that
- take advantage of bigger maxpacket
- when ep are to use max for it's psed then set max_packet_msize to 0 and use same descriptto for alls peed
- at descriptiton construction tiem that will be auto filled
+ a device similar in hs and fs can re-used most of its descriptor expect ep descriptor that
+ maxpacket size are by speed.  When max_packet_msize is et to 0 for auto max packet size then same
+ des same ep descriptors can be used in all speed intefarce descriptor it wil be update at load time.
 
  ep number => in/out use std usb ep 0x80 mask extra 0x40 is added for auto allocated ep number
  non automatic number must be filled and valid from registration and all function life cycle
  interface number => updated
 
-interface and tehre alternate setting must be consecutive
-manual interface number are almost immpossible to manage
+interface number and there alternate setting must be consecutive
+manual interface number are almost impossible to manage but adding them as n first interfaces
+prior to add any over functions and reserving these number could do.
+The best woudl be for manulay manged interface to get last used intreface numebr after all auto are aded
+and then registre them (the config must nows of it)
+
+functions interface should be present at all speed, or auto interface numbering and any back reference will fail.
+for instance a cdc function need to refer absolute interface number in a class specific descriptor
+these number will not be same if an interface place before cdc function does not exist at lowest speed.
+These issue is even present in linux/gadget.
+Placing all these non multi-speed interface  at end is a simple way to work it arround.
+
 
 to some extent str index in "interface" could be made automatic
  */
@@ -94,7 +103,7 @@ USBD_ClassTypeDef CDev_Class={
 
     _CDev_GetHSConfigDescriptor,
     _CDev_GetFSConfigDescriptor,
-    _CDev_GetFSConfigDescriptor,  // GetOtherSpeedConfigDescriptor => FS
+    _CDev_GetFSConfigDescriptor,  // TODO GetOtherSpeedConfigDescriptor => FS
     _CDev_GetDeviceQualifierDescriptor,
     #if (USBD_SUPPORT_USER_STRING == 1)
     _CDev_GetUsrStrDescriptor,
@@ -580,15 +589,20 @@ uint8_t _CDev_Init(struct _USBD_HandleTypeDef *pdev, uint8_t cfgidx)
     int status = 0;
     int i;
 /* note cfg idx = 0 = reset cfg is receive via "Deinit" */
-    active_usbd=pdev;   /* store "unique active pdev as some call do nto havea,y as ref to retrivee the class ptr */
+    active_usbd=pdev;   /* store "unique" active pdev as USBD some call do not have ref to retrieve the class ptr */
     if (cfgidx == 1) {
         //TODO return all func to alt 0 ? call init first
         for (i = 0; i < cdev->n_func; i++) {
             uf = cdev->Funcs[i];
+            /* as function to do it(s  init work we'll soon build config descr for host */
+            if (uf->intf->init){
+                uf->intf->init(uf);
+            }
+            /* TODO do these here => */
             if (uf->intf->enable) {
                 status = uf->intf->enable(uf);
                 if (!status)
-                    break; /* if any interface is not enable to init stop init and stall the set cfg */
+                    break; /* if any interface is not enable to start stall the set cfg */
             }
         }
     }

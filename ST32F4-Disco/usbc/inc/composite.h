@@ -18,8 +18,8 @@ enum AddFuncFlags_e {
      * at lest mnual interafce number must be known in advance */
     FORCE_AUTO_IF   =0x0004, /* when set al ep "address" are automatic even if not marked as such */
 
-    /* force auto is to be used on "one config" descriptor  without any adjustment
-     * yet the code must take into account the fact final ep address is likely different and must be
+    /* force auto i/f and ep is to used "one config" descriptor ST class sample without any adjustment
+     * yet the code must take into account the fact final ep address may be different and must be
      * Adjust using TBD or parsing the descriptor or by storing that in some user data ptr
      * at init time (after final ep allocation)
      */
@@ -35,7 +35,7 @@ struct usbfunc_itf_t   {
     void (*disable) (struct  usbfunc_t *f);
     int  (*enable)  (struct  usbfunc_t *f);
     int  (*set_alt) (struct  usbfunc_t *f, int itf, int alt);
-
+    int  (*init)    (struct  usbfunc_t *f);
     int  (*in_data) (struct  usbfunc_t *f, int ep);
     int  (*out_data)(struct  usbfunc_t *f, int ep);
 };
