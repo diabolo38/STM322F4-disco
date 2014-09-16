@@ -211,9 +211,7 @@ uint8_t *  USB_DEV_ProductStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *len
   }
   else
   {
-      extern volatile int usb_id;
-      char *str=usb_id ? "Product0 FS" : "Product1 FS";
-    USBD_GetString ((uint8_t*)str, USBD_StrDesc, length);
+    USBD_GetString ((uint8_t *)USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);
   }
   return USBD_StrDesc;
 }

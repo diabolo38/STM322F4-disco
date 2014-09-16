@@ -87,9 +87,6 @@ TIM_OC_InitTypeDef sConfigTim4;
 uint8_t Counter  = 0x00;
 __IO uint16_t MaxAcceleration = 0;
 
-volatile int usb_disconect=0; // set to 1 by usb devcie when need to disconect reconect
-volatile int usb_id=0; // set to 1 by usb devcie when need to disconect reconect
-
 /* Private function prototypes -----------------------------------------------*/
 static uint32_t Demo_USBConfig(void);
 static void TIM4_Config(void);
@@ -97,8 +94,6 @@ static void Demo_Exec(void);
 static uint8_t *USBD_HID_GetPos (void);
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-
-
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -143,63 +138,97 @@ int main(void)
   * @param  None
   * @retval None
   */
-static void Demo_Exec(void) {
-    uint8_t togglecounter = 0x00;
+static void Demo_Exec(void)
+{
+  uint8_t togglecounter = 0x00;
+  
+  /* Initialize Accelerometer MEMS*/
+  if(BSP_ACCELERO_Init() != HAL_OK)
+  {
+    /* Initialization Error */
+    Error_Handler(); 
+  }
 
-    /* Initialize Accelerometer MEMS*/
-    if (BSP_ACCELERO_Init() != HAL_OK) {
-        /* Initialization Error */
-        Error_Handler();
-    }
-
-    while (1) {
-        DemoEnterCondition = 0x00;
-
-        /* Reset UserButton_Pressed variable */
-        UserButtonPressed = 0x00;
-
-        /* Initialize LEDs to be managed by GPIO */
-        BSP_LED_Init(LED4);
-        BSP_LED_Init(LED3);
-        BSP_LED_Init(LED5);
-        BSP_LED_Init(LED6);
-
-        /* SysTick end of count event each 10ms */
-        SystemCoreClock = HAL_RCC_GetHCLKFreq();
-        SysTick_Config(SystemCoreClock / 100);
-
-        /* Turn OFF all LEDs */
-        BSP_LED_Off(LED4);
-        BSP_LED_Off(LED3);
-        BSP_LED_Off(LED5);
-        BSP_LED_Off(LED6);
-
-        /* Waiting User Button is pressed */
-        Demo_USBConfig();
-        while (1) {
-            /* Toggle LED4 */
-            BSP_LED_Toggle(LED4);
-            HAL_Delay(10);
-            if( usb_id)
-                BSP_LED_On(LED5);
-            else
-                BSP_LED_Off(LED5);
-
-            if (usb_disconect) {
-                BSP_LED_On(LED6);
-                /* Disconnect the USB device */
-                USBD_Stop(&hUSBDDevice);
-                USBD_DeInit(&hUSBDDevice);
-                HAL_Delay(10);
-                BSP_LED_Off(LED6);
-                usb_disconect = 0;
-
-                /* USB configuration */
-                Demo_USBConfig();
-
-            }
+  while(1)
+  {
+    DemoEnterCondition = 0x00;
+    
+    /* Reset UserButton_Pressed variable */
+    UserButtonPressed = 0x00;
+    
+    /* Initialize LEDs to be managed by GPIO */
+    BSP_LED_Init(LED4);
+    BSP_LED_Init(LED3);
+    BSP_LED_Init(LED5);
+    BSP_LED_Init(LED6);
+    
+    /* SysTick end of count event each 10ms */
+    SystemCoreClock = HAL_RCC_GetHCLKFreq();
+    SysTick_Config(SystemCoreClock / 100);  
+    
+    /* Turn OFF all LEDs */
+    BSP_LED_Off(LED4);
+    BSP_LED_Off(LED3);
+    BSP_LED_Off(LED5);
+    BSP_LED_Off(LED6);
+    
+    /* Waiting User Button is pressed */
+    while (UserButtonPressed == 0x00)
+    {
+      /* Toggle LED4 */
+      BSP_LED_Toggle(LED4);
+      HAL_Delay(10);
+      /* Toggle LED4 */
+      BSP_LED_Toggle(LED3);
+      HAL_Delay(10);
+      /* Toggle LED4 */
+      BSP_LED_Toggle(LED5);
+      HAL_Delay(10);
+      /* Toggle LED4 */
+      BSP_LED_Toggle(LED6);
+      HAL_Delay(10);
+      togglecounter ++;
+      if (togglecounter == 0x10)
+      {
+        togglecounter = 0x00;
+        while (togglecounter < 0x10)
+        {
+          BSP_LED_Toggle(LED4);
+          BSP_LED_Toggle(LED3);
+          BSP_LED_Toggle(LED5);
+          BSP_LED_Toggle(LED6);
+          HAL_Delay(10);
+          togglecounter ++;
         }
+        togglecounter = 0x00;
+      }
     }
+    
+    /* Waiting User Button is Released */
+    while (BSP_PB_GetState(BUTTON_KEY) != KEY_NOT_PRESSED)
+    {}
+    UserButtonPressed = 0x00;
+    
+    /* TIM4 channels configuration */
+    TIM4_Config();
+  
+    DemoEnterCondition = 0x01; 
+    
+    /* USB configuration */
+    Demo_USBConfig();
+    
+    /* Waiting User Button is pressed */
+    while (UserButtonPressed == 0x00)
+    {}
+    
+    /* Waiting User Button is Released */
+    while (BSP_PB_GetState(BUTTON_KEY) != KEY_NOT_PRESSED)
+    {}
+    
+    /* Disconnect the USB device */
+    USBD_Stop(&hUSBDDevice);
+    USBD_DeInit(&hUSBDDevice);
+  }
 }
 
 /**
@@ -241,7 +270,6 @@ static uint32_t Demo_USBConfig(void) {
 #else
     int status;
     /* Init Device Library */
-    usb_id=(usb_id+1)%2;
     status = USBD_Init(&hUSBDDevice, &USBDev_Desc, 0);
     if ( status == USBD_OK) {
         /* Add Supported Class */
@@ -365,7 +393,7 @@ void HAL_SYSTICK_Callback(void)
                           4);
     }
 #else
-   // (void)buf; /* avoid warning un-used param buf */
+    (void)buf; /* avoid warning un-used param buf */
 #endif
 
 #if USE_CDC

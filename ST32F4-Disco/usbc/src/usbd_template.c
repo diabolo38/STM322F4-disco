@@ -249,7 +249,6 @@ static uint8_t  USBD_TEMPLATE_DeInit (USBD_HandleTypeDef *pdev,
   return USBD_OK;
 }
 
-extern volatile int usb_disconect;
 /**
   * @brief  USBD_TEMPLATE_Setup
   *         Handle the TEMPLATE specific requests
@@ -257,40 +256,32 @@ extern volatile int usb_disconect;
   * @param  req: usb requests
   * @retval status
   */
-static uint8_t USBD_TEMPLATE_Setup(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req) {
-
-    switch (req->bmRequest & USB_REQ_TYPE_MASK) {
-    case USB_REQ_TYPE_VENDOR:
-        switch (req->bRequest) {
-        case 0xAA:
-            // disconect
-            usb_disconect++;
-            break;
-        default:
-            USBD_CtlError(pdev, req);
-            return USBD_FAIL;
-
-        }
-        break;
-    case USB_REQ_TYPE_CLASS:
-        switch (req->bRequest) {
-
-        default:
-            USBD_CtlError(pdev, req);
-            return USBD_FAIL;
-        }
-        break;
-
-    case USB_REQ_TYPE_STANDARD:
-        switch (req->bRequest) {
-
-        default:
-            USBD_CtlError(pdev, req);
-            return USBD_FAIL;
-        }
-        break;
+static uint8_t  USBD_TEMPLATE_Setup (USBD_HandleTypeDef *pdev, 
+                                USBD_SetupReqTypedef *req)
+{
+ 
+  switch (req->bmRequest & USB_REQ_TYPE_MASK)
+  {
+  case USB_REQ_TYPE_CLASS :  
+    switch (req->bRequest)
+    {
+      
+    default:
+      USBD_CtlError (pdev, req);
+      return USBD_FAIL; 
     }
-    return USBD_OK;
+    break;
+    
+  case USB_REQ_TYPE_STANDARD:
+    switch (req->bRequest)
+    {
+    
+    default:
+      USBD_CtlError (pdev, req);
+      return USBD_FAIL;     
+    }
+  }
+  return USBD_OK;
 }
 
 
