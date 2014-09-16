@@ -49,7 +49,7 @@
 #include "usbd_hid.h" 
 
 #define USE_HID 0
-#define USE_CDC 1
+#define USE_CDC 0
 #if USE_CDC
     #include "usbd_cdc.h"
 #endif
