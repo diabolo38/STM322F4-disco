@@ -234,7 +234,7 @@ _start(void)
     }
 #endif
 
- // __initialize_hardware();
+   __initialize_hardware();
 
   // Get the args (useful in semihosting configurations).
   int argc;

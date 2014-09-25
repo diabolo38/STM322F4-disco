@@ -90,6 +90,9 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/system/include}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.206073282" name="Use preprocessor" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1737419997" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="HSE_VALUE=8000000"/>
+								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.12770691" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.348142319" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
@@ -112,6 +115,8 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1368121454" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
 									<listOptionValue builtIn="false" value="USE_STM32F4_DISCO"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=8000000"/>
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1147012855" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 							</tool>
