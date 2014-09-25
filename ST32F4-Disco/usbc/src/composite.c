@@ -469,8 +469,9 @@ uint8_t* _CDev_GetDeviceQualifierDescriptor(uint16_t *length){
 }
 
 uint8_t* _CDev_GetUsrStrDescriptor(struct _USBD_HandleTypeDef *pdev ,uint8_t index,  uint16_t *length){
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
-
+    __attribute__((unused))  struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
+    return NULL;
 }
 
 uint8_t  _CDev_Setup (struct _USBD_HandleTypeDef *pdev , USBD_SetupReqTypedef  *req){
@@ -494,13 +495,15 @@ uint8_t  _CDev_Setup (struct _USBD_HandleTypeDef *pdev , USBD_SetupReqTypedef  *
 
 uint8_t _CDev_EP0_TxSent(struct _USBD_HandleTypeDef *pdev )
 {
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
+    __attribute__((unused)) struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
     return 0;
 }
 
 uint8_t _CDev_EP0_RxReady(struct _USBD_HandleTypeDef *pdev )
 {
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
+    __attribute__((unused)) struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
     return 0;
 }
 
@@ -540,16 +543,19 @@ uint8_t  _CDev_DataOut (struct _USBD_HandleTypeDef *pdev , uint8_t epnum){
 }
 
 uint8_t  _CDev_SOF (struct _USBD_HandleTypeDef *pdev){
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
+    __attribute__((unused))  struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
     return 0;
 }
 uint8_t  _CDev_IsoINIncomplete  (struct _USBD_HandleTypeDef *pdev , uint8_t epnum){
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
+    __attribute__((unused)) struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
     return 0;
 }
 
 uint8_t  _CDev_IsoOUTIncomplete (struct _USBD_HandleTypeDef *pdev , uint8_t epnum){
-    struct CDev_t * cdev=usbd_2_cdev(pdev);
+    __attribute__((unused))  struct CDev_t * cdev=usbd_2_cdev(pdev);
+    //TODO
     return 0;
 }
 
