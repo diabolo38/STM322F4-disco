@@ -1,16 +1,29 @@
 //
-// This file is part of the GNU ARM Eclipse Plug-in
-// Copyright (c) 2013 Liviu Ionescu
+// This file is part of the µOS++ III distribution.
+// Copyright (c) 2014 Liviu Ionescu.
 //
+
+// ----------------------------------------------------------------------------
 
 #include <sys/types.h>
 #include <errno.h>
 
+// ----------------------------------------------------------------------------
+
+caddr_t
+_sbrk(int incr);
+
+// ----------------------------------------------------------------------------
+
+// The definitions used here should be kept in sync with the
+// stack definitions in the linker script.
+
 caddr_t
 _sbrk(int incr)
 {
-  extern char _Heap_Begin; /* Defined by the linker. */
-  extern char _Heap_Limit; /* Defined by the linker. */
+  extern char _Heap_Begin; // Defined by the linker.
+  extern char _Heap_Limit; // Defined by the linker.
+
   static char* current_heap_end;
   char* current_block_address;
 
@@ -37,7 +50,7 @@ _sbrk(int incr)
 #else
       // Heap has overflowed
       errno = ENOMEM;
-      return (caddr_t) - 1;
+      return (caddr_t) -1;
 #endif
     }
 
@@ -45,3 +58,6 @@ _sbrk(int incr)
 
   return (caddr_t) current_block_address;
 }
+
+// ----------------------------------------------------------------------------
+
