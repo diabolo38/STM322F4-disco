@@ -40,6 +40,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/FreeRtos</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Middlewares/usb-d</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -78,6 +83,46 @@
 			<name>drivers/HAL</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/ARM_CM4F</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/CMSIS_RTOS</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/croutine.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/croutine.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/include</name>
+			<type>2</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/include</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/list.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/list.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/queue.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/queue.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/tasks.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/tasks.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/FreeRtos/timers.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/timers.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/usb-d/class</name>

@@ -88,9 +88,12 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1175036273" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths.1158443196" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/ARM_CM4F}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/CMSIS_RTOS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/include}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.206073282" name="Use preprocessor" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1737419997" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1737419997" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HSE_VALUE=8000000"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.12770691" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
@@ -107,10 +110,12 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/cdc/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/AUDIO/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/usb-d/class/DFU/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/toolchain}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/usbc/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/drivers/HAL/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/ARM_CM4F}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/CMSIS_RTOS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST32F4-Disco/Middlewares/FreeRtos/include}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1368121454" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F407xx"/>
@@ -156,7 +161,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="usb-h|usb-d/Src/usbd_conf_template.c|usb-d/class/msc|usb-d/class/DFU|usb-d/class/AUDIO" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry excluding="FreeRtos|usb-h|usb-d/Src/usbd_conf_template.c|usb-d/class/msc|usb-d/class/DFU|usb-d/class/AUDIO" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="app"/>
 						<entry excluding="STM32F4-Discovery/stm32f4_discovery_audio.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
