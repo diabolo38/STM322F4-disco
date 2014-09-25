@@ -100,6 +100,11 @@
 			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/croutine.c</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/FreeRtos/heap_4.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c</locationURI>
+		</link>
+		<link>
 			<name>Middlewares/FreeRtos/include</name>
 			<type>2</type>
 			<locationURI>STM32F4_CUBE/Middlewares/Third_Party/FreeRTOS/Source/include</locationURI>
@@ -148,6 +153,11 @@
 			<name>drivers/CMSIS/STM32F4xx</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>drivers/CMSIS/system_stm32f4xx.c</name>
+			<type>1</type>
+			<locationURI>STM32F4_CUBE/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c</locationURI>
 		</link>
 		<link>
 			<name>drivers/HAL/Inc</name>

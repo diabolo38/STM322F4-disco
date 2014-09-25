@@ -59,6 +59,18 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+extern __IO uint8_t DemoEnterCondition; // set to  1 when is usb mode
+extern USBD_HandleTypeDef  hUSBDDevice; // the usb desc
+
+#define TICK_MUL    10  // mul factor to applt to delay vs initial demo
+
+#if USE_FREE_RTOS
+    void freetos_init(void);
+#else
+    #define freetos_init(...) (void)0
+#endif
+
+void DoCDC_Info(void);
 #endif /* __MAIN_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

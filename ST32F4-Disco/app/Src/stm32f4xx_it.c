@@ -56,9 +56,17 @@ extern PCD_HandleTypeDef hpcd;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+
+#if USE_FREE_RTOS
+    extern void xPortSysTickHandler(void);
+#else
+    #define xPortSysTickHandler() (void)0
+#endif
+
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
 /******************************************************************************/
+
 
 /**
   * @brief   This function handles NMI exception.
@@ -139,9 +147,8 @@ void DebugMon_Handler(void)
 void SysTick_Handler(void)
 {
 
-//    xPortSysTickHandler();
-//    HAL_IncTick();
-  HAL_IncTick();
+ xPortSysTickHandler();
+ HAL_IncTick();
   
   /* Call user callback */
   HAL_SYSTICK_IRQHandler();

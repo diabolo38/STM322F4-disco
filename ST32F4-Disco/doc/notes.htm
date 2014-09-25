@@ -1,9 +1,18 @@
 <h2> eclipse setup</h2>
+<h2>gnu arm eclispe plugin</h2>
+
+gnu arm eclispe plugin is highly recomanded even if the project may still buidl using "cross gcc toolschain"
+If you switch toolchain most compile and link setting will be lost and you have to resetup them.
+ 
+teh plugin can be installed from <a href="http://gnuarmeclipse.sourceforge.net/updates">here</a><br>
+follow usual eclispe software install from menu window->preference-> isntall new software
+ 
 <h2>var</h2>
 STM32F4_CUBE linked resource variable must be defined and point to stm32f4_vxxx library top folder<br>
 the library is partilay downloaded by STM32CuveMX but the project equired the  full package that can be donwloed from 
  <a href="http://www.st.com/web/en/catalog/tools/PF259243">st web site</a>
 <img src="link_var.png"></img>
+<br>
 refresh (f5) project once done to get all path resolved <br>
  <h2>setting</h2>
  update cross compiler path as needed (if in system path it may be removed)<br>
@@ -26,9 +35,14 @@ make sure to have a correct stm32f4_hal_conf.h in your app/inc!<br>
 unused driver c file may be exclude from build to save compile time.
  
 <h2>Middlewares</h2>
-Middlewares from the stm32f4 cube library only usb device are present for now,<br> 
-unused class directory may be exclude from link to save compile time.  
+Middlewares from the stm32f4 cube library <br>
+<h3>usb device and host ,</h3>
+unused class directory may be exclude from link to save compile time.<br>  
 
+<h3>FreeRTOS</h3>
+excluded from build by default, also require symbol USE_FREE_RTOS to be set to 1<br>
+CDC + FreeRTos show tasking , one task runns the demo the 2nd sent message on vitrtual com port <br> 
+ 
 <h2>usbc</h2>
 in progress work for usb device to support a better composite usb device framework<br>
 require to get demo hid/cdc <br> 
@@ -44,20 +58,25 @@ demo can be built with hid or cdc (include a typical cdc if from cube generator)
 see main.h only define one of <br>  
 #define USE_HID 0 <br>
 #define USE_CDC 1 <br>
+if none is selected custom vendor specific device is included <br>
 
-By defaut external HS mode is used but internal osiclator can be selected by editing<br> 
-static void SystemClock_Config(void)<br>
+By defaut external HSE mode is used (require for proper USb operation) <br>
+internal osiclator can be selected by editing SystemClock_Config(void), CubeMX can generate a config for you <br>
+
+to activate FreeRTOS de-exclude FreeRToOS directory from build (resource configuration)<br>
+in project propertie (general->path and symbol)  edit symbol USE_FREE_RTOS value to 1 (do not delete the symbols)
  
 <h2>launch and debug </h2>
 update the launch config to use rigth opencd and debuger if not correct<br>
-<img src="debug_cfg.png"></img>
+<img src="debug_cfg.png"></img><br>
 if eclipse cross var are sets you could use ${cross_prefix}gdb${cross_suffix} instead of system path<br>
 <br> 
 openocd launcher is part of gnu arm eclispe plugin it can be installed from <a href="http://gnuarmeclipse.sourceforge.net/updates">here</a>
 
 <h2>running</h2>
-Like the offcial demo press the ble buuton to togle usb mode<br>
+Like the offcial demo press the blue button to togle usb mode<br>
 download and install virtual com driver from <a href="http://www.st.com/web/en/catalog/tools/PF257938"> st site </a> and install it. 
-when demo enter usb cdc mode it will send mems acceleration x,y  to serial (use a terminal such as putty or teraterm)
+when demo enter usb cdc mode it will send mems acceleration x avg, y avg ,z avg , dx ,dy,dz "n <\br>
+to serial (use a terminal such as putty or teraterm)
 
 

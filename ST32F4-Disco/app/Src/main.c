@@ -38,6 +38,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "usbd_template.h"
 
 /** @addtogroup STM32F4xx_HAL_Demonstrations
@@ -121,12 +122,25 @@ int main(void)
   /* Configure the system clock to 168 Mhz */
   SystemClock_Config();
 
+  SysTick_Config (SystemCoreClock / 1000);
+
   /* Initialize LEDs and User_Button on STM32F401-Discovery ------------------*/
-  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI); 
+  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
+
+  /*
+  * SysTick initialization
+  */
+  freetos_init();
 
   /* Execute Demo application */
+#if USE_FREE_RTOS
+  osThreadDef(Demo_Thread, Demo_Exec, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+  osThreadCreate (osThread(Demo_Thread), NULL);
+  /* Start scheduler */
+  osKernelStart(NULL, NULL);
+#else
   Demo_Exec();
-  
+#endif
   /* Infinite loop */
   while (1)
   {    
@@ -162,9 +176,7 @@ static void Demo_Exec(void)
     BSP_LED_Init(LED5);
     BSP_LED_Init(LED6);
     
-    /* SysTick end of count event each 10ms */
-    SystemCoreClock = HAL_RCC_GetHCLKFreq();
-    SysTick_Config(SystemCoreClock / 100);  
+
     
     /* Turn OFF all LEDs */
     BSP_LED_Off(LED4);
@@ -177,16 +189,16 @@ static void Demo_Exec(void)
     {
       /* Toggle LED4 */
       BSP_LED_Toggle(LED4);
-      HAL_Delay(10);
+      HAL_Delay(10*TICK_MUL);
       /* Toggle LED4 */
       BSP_LED_Toggle(LED3);
-      HAL_Delay(10);
+      HAL_Delay(10*TICK_MUL);
       /* Toggle LED4 */
       BSP_LED_Toggle(LED5);
-      HAL_Delay(10);
+      HAL_Delay(10*TICK_MUL);
       /* Toggle LED4 */
       BSP_LED_Toggle(LED6);
-      HAL_Delay(10);
+      HAL_Delay(10*TICK_MUL);
       togglecounter ++;
       if (togglecounter == 0x10)
       {
@@ -197,7 +209,7 @@ static void Demo_Exec(void)
           BSP_LED_Toggle(LED3);
           BSP_LED_Toggle(LED5);
           BSP_LED_Toggle(LED6);
-          HAL_Delay(10);
+          HAL_Delay(10*TICK_MUL);
           togglecounter ++;
         }
         togglecounter = 0x00;
@@ -368,6 +380,64 @@ static void TIM4_Config(void)
   }
 }
 
+
+
+int32_t MemsPosSums[3];
+int Mems_n;
+
+/**
+ *
+ */
+struct MemsContext_t{
+    int fixprec;
+    int period;
+    int n;
+    int sums[3];
+    int last[3];
+    int avg[3];
+    int delta[3];
+
+}MemsCtx={
+        .period=8,
+        .fixprec=8,
+};
+
+void MemsProccess(struct MemsContext_t *ctx, int16_t Buffer[3])
+{
+    int i;
+    if( ctx->n < 0x7FFFFFFF)
+        ctx->n++;
+    for( i=0; i<3; i++ ){
+        ctx->last[i]=Buffer[i]<<ctx->fixprec;
+        ctx->sums[i]+=ctx->last[i];
+        if(ctx->n>ctx->period ){
+            ctx->sums[i]=ctx->sums[i]*ctx->period/(ctx->period+1);
+            ctx->avg[i]=ctx->sums[i]/ctx->period;
+        }
+        else{
+            ctx->avg[i]=ctx->sums[i]/ctx->n;
+        }
+        ctx->delta[i]=ctx->last[i]-ctx->avg[i];
+    }
+}
+
+void DoCDC_Info(void) {
+    USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*) hUSBDDevice.pClassData;
+    if (hcdc->TxState == 0 && hcdc->TxBuffer) {
+        int x, y, z, dx, dy, dz;
+        x = MemsCtx.avg[0] >> MemsCtx.fixprec;
+        y = MemsCtx.avg[1] >> MemsCtx.fixprec;
+        z = MemsCtx.avg[2] >> MemsCtx.fixprec;
+        dx = MemsCtx.delta[0] >> MemsCtx.fixprec;
+        dy = MemsCtx.delta[1] >> MemsCtx.fixprec;
+        dz = MemsCtx.delta[2] >> MemsCtx.fixprec;
+
+        sprintf((char*) hcdc->TxBuffer, "%d %d %d %d %d %d #%d\n", x, y, z, dx, dy, dz, MemsCtx.n);
+        hcdc->TxLength = strlen((char*) hcdc->TxBuffer);
+        USBD_CDC_TransmitPacket(&hUSBDDevice);
+    }
+}
+
 /**
   * @brief  SYSTICK callback.
   * @param  None
@@ -385,7 +455,6 @@ void HAL_SYSTICK_Callback(void)
      buf = USBD_HID_GetPos();
 
 #if USE_HID
-
     if((buf[1] != 0) ||(buf[2] != 0))
     {
       USBD_HID_SendReport (&hUSBDDevice, 
@@ -396,21 +465,15 @@ void HAL_SYSTICK_Callback(void)
     (void)buf; /* avoid warning un-used param buf */
 #endif
 
-#if USE_CDC
-      USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUSBDDevice.pClassData;
-      if( hcdc->TxState == 0 && hcdc->TxBuffer ){
-          sprintf( (char*)hcdc->TxBuffer, "%d %d\n", Buffer[0], Buffer[1]);
-          hcdc->TxLength=strlen((char*)hcdc->TxBuffer);
-          USBD_CDC_TransmitPacket(&hUSBDDevice);
-      }
-#endif
+
     Counter ++;
-    if (Counter == 10)
+    if (Counter == 10*TICK_MUL)
     {
+
       /* Reset Buffer used to get accelerometer values */
       Buffer[0] = 0;
       Buffer[1] = 0;
-      
+
       /* Disable All TIM4 Capture Compare Channels */
       HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
       HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_2);
@@ -419,8 +482,11 @@ void HAL_SYSTICK_Callback(void)
 
       /* Read Acceleration*/
       BSP_ACCELERO_GetXYZ(Buffer);
+      MemsProccess(&MemsCtx, Buffer);
 
-
+#if USE_CDC && USE_FREE_RTOS==0
+      DoCDC_Info();
+#endif
       
       /* Set X and Y positions */
       X_Offset = Buffer[0];
