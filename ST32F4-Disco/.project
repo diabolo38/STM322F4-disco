@@ -250,10 +250,4 @@
 			<locationURI>STM32F4_CUBE/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c</locationURI>
 		</link>
 	</linkedResources>
-	<variableList>
-		<variable>
-			<name>STM32F4_CUBE</name>
-			<value>file:/C:/STM/STM32Cube_FW_F4_V1.3.0</value>
-		</variable>
-	</variableList>
 </projectDescription>
